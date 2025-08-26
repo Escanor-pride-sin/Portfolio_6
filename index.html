@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shashikiran M — Data Analyst Portfolio</title>
+  <meta name="description" content="Portfolio of Shashikiran M — Data Analyst. Projects in Python, SQL and Data Visualization." />
+  <meta name="author" content="Shashikiran M" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0e13;          /* page background */
+      --panel:#111520;       /* cards/nav */
+      --muted:#a6adbb;       /* secondary text */
+      --text:#eff3fb;        /* primary text */
+      --brand:#7c5cff;       /* accent */
+      --brand-2:#21d4fd;     /* gradient 2 */
+      --ring:rgba(124,92,255,.4);
+      --ok:#2ecc71; --warn:#f1c40f; --danger:#e74c3c;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(124,92,255,.12), transparent 0%),
+                  radial-gradient(1000px 900px at 110% 10%, rgba(33,212,253,.10), transparent 0%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%;display:block}
+    .container{width:min(1100px, 92%);margin-inline:auto}
+    .pill{border:1px solid rgba(255,255,255,.1);padding:.45rem .75rem;border-radius:999px;display:inline-flex;gap:.5rem;align-items:center;color:var(--muted)}
+    .tag{display:inline-block;background:rgba(124,92,255,.12);border:1px solid rgba(124,92,255,.35);padding:.3rem .6rem;border-radius:999px;font-size:.8rem;color:#dcd7ff;margin:.2rem .25rem 0 0}
+
+    /* ====== Nav ====== */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,14,19,.65);backdrop-filter: blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:700;letter-spacing:.2px}
+    .brand .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;box-shadow:0 8px 24px var(--ring)}
+    .brand .logo span{font-weight:800;color:#fff}
+    .nav ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
+    .nav a{color:#dbe3f5;padding:.5rem .75rem;border-radius:10px;display:inline-block}
+    .nav a:hover{background:rgba(255,255,255,.06)}
+    .menu-btn{display:none}
+
+    /* ====== Hero ====== */
+    .hero{padding:80px 0 40px}
+    .grid-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+    .kicker{color:var(--muted);margin:0 0 .5rem}
+    h1{font-size:clamp(28px, 4vw, 46px);line-height:1.15;margin:.3rem 0 1rem}
+    .lead{font-size:1.05rem;color:#cfd6e6;margin:0 0 1.4rem}
+    .cta{display:flex;gap:.8rem;flex-wrap:wrap}
+    .btn{appearance:none;border:0;cursor:pointer;font-weight:600;border-radius:12px;padding:.9rem 1rem}
+    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#0b0e13;box-shadow:0 12px 30px var(--ring)}
+    .btn-ghost{background:rgba(255,255,255,.06);color:#e9eeff;border:1px solid rgba(255,255,255,.12)}
+    .card-hero{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:18px;box-shadow:var(--shadow);padding:18px}
+    .hero-img{aspect-ratio:1.3/1;border-radius:14px;background:linear-gradient(135deg, rgba(124,92,255,.18), rgba(33,212,253,.18));display:grid;place-items:center;color:#cfd6e6;font-size:.95rem;border:1px dashed rgba(255,255,255,.18)}
+
+    /* ====== Sections ====== */
+    section{padding:56px 0}
+    .section-title{font-size:1.6rem;margin:0 0 18px}
+    .sub{color:var(--muted);margin:0 0 24px}
+    .panel{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:18px;box-shadow:var(--shadow)}
+
+    /* ====== About ====== */
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .about .me{padding:20px}
+    .kv{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:16px}
+    .kv div{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px}
+    .kv b{display:block;font-size:.85rem;color:#dfe7fb}
+    .kv small{color:var(--muted)}
+
+    /* ====== Skills ====== */
+    .skills{display:grid;grid-template-columns:1fr;gap:16px}
+    .skill-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:16px}
+    .skill-card{padding:16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+    .skill-card h4{margin:0 0 .5rem;font-size:1rem}
+
+    /* ====== Timeline (Education & Experience) ====== */
+    .timeline{position:relative;padding:10px 10px 10px 24px}
+    .timeline::before{content:"";position:absolute;left:12px;top:0;bottom:0;width:2px;background:linear-gradient(var(--brand),transparent)}
+    .t-item{position:relative;margin:0 0 16px;padding-left:12px}
+    .t-item::before{content:"";position:absolute;left:-2px;top:.35rem;width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 0 0 4px rgba(124,92,255,.18)}
+    .t-h{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+    .t-h b{font-size:1rem}
+    .t-h .pill{font-size:.78rem}
+    .t-sub{color:var(--muted);margin:.15rem 0 .4rem}
+
+    /* ====== Projects ====== */
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .project{overflow:hidden}
+    .project .cover{aspect-ratio:16/9;border-radius:14px;background:linear-gradient(135deg, rgba(124,92,255,.18), rgba(33,212,253,.18));border:1px dashed rgba(255,255,255,.18);display:grid;place-items:center;color:#cfd6e6}
+    .project .body{padding:14px}
+    .project h4{margin:0 0 .25rem}
+    .project p{color:#cdd3e3;margin:.2rem 0 .6rem}
+
+    /* ====== Contact ====== */
+    .contact{display:grid;grid-template-columns:1fr .9fr;gap:20px}
+    .contact .map{border-radius:14px;overflow:hidden;height:100%;min-height:280px;border:1px solid rgba(255,255,255,.06)}
+    form{display:grid;gap:10px}
+    input,textarea{width:100%;background:#0e131c;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:.8rem 1rem;color:var(--text);font:inherit}
+    textarea{min-height:120px;resize:vertical}
+    input:focus,textarea:focus{outline:2px solid var(--ring);border-color:transparent}
+
+    /* ====== Footer ====== */
+    footer{padding:28px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,.06)}
+
+    /* ====== Responsive ====== */
+    @media (max-width: 980px){
+      .grid-hero{grid-template-columns:1fr}
+      .projects{grid-template-columns:repeat(2,1fr)}
+      .about{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .nav ul{display:none}
+      .menu-btn{display:inline-flex;align-items:center;gap:.5rem}
+      .projects{grid-template-columns:1fr}
+      .skill-groups{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- ====== NAV ====== -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><span>SM</span></div>
+        <span>Shashikiran M</span>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#Simulations">Job Simulation</a></li>
+        </ul>
+      </nav>
+      <button class="menu-btn pill" id="menuBtn" aria-label="Open menu">☰ <span>Menu</span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====== HERO ====== -->
+    <section class="hero container" id="home">
+      <div class="grid-hero">
+        <div>
+          <p class="kicker">Data Analyst • AI Enthusiast</p>
+          <h1>Hi, I'm <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Shashikiran M</span></h1>
+          <p class="lead">Motivated and detail-oriented Data Analyst with a strong foundation in data analysis and visualization. Experienced with Python, SQL, Power BI, Microsoft Excel and Google Sheets. I love building useful products from data.</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-ghost" href="https://mail.google.com/mail/?view=cm&fs=1&to=shashikiranm611@gmail.com" target="_blank">Email Me</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/shashi611" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a class="btn btn-ghost" href="https://github.com/Escanor-pride-sin?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
+
+          </div>
+        </div>
+        <div class="card-hero">
+          <!-- Replace the placeholder below with your real portrait or banner later -->
+              <img src="Image\ways-to-earn-power-bi-skills-for-data-analyst.png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== ABOUT ====== -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="sub">A quick overview of who I am and what I bring.</p>
+        <div class="about">
+          <div class="panel me">
+            <p>
+              I'm a Data Analyst with hands-on experience in <b>Python</b>, <b>SQL</b>,<b>Power BI</b>,<b>Google Sheets</b> and <b>Microsoft Excel</b>, focused on building data-driven features and clear visualizations. I enjoy collaborating across teams and translating business questions into analysis that drives action.
+            </p>
+            <div class="kv">
+              <div><b>Email</b><small>shashikiranm611@gmail.com</small></div>
+              <div><b>Phone</b><small>+91 93538 63388</small></div>
+              <div><b>Location</b><small>Nayandahalli, Bengaluru</small></div>
+              <div><b>LinkedIn</b><small>https://www.linkedin.com/in/shashi611</small></div>
+            </div>
+          </div>
+          <div class="panel">
+            <!-- Optional profile image / collage -->
+            <div class="hero-img" style="min-height:260px">
+              <div>
+                <img src="Image\WhatsApp Image 2025-08-26 at 5.25.14 PM.jpeg" alt="BridgeConnect project cover" style="width:100%; height:350px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SKILLS ====== -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <p class="sub">Technical stack and soft skills I work with day-to-day.</p>
+        <div class="panel skills">
+          <div class="skill-groups">
+            <div class="skill-card">
+              <h4>Programming</h4>
+              <span class="tag">Python</span>
+              <span class="tag">HTML</span>
+              <span class="tag">SQL</span>
+            </div>
+            <div class="skill-card">
+              <h4>Tools & Platforms</h4>
+              <span class="tag">Microsoft Excel</span>
+              <span class="tag">Google Sheets</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Jupyter Notebook</span>
+              <span class="tag">Looker Studio</span>
+              <span class="tag">Power BI</span>
+            </div>
+            <div class="skill-card">
+              <h4>Soft Skills</h4>
+              <span class="tag"> Analytical Thinking</span>
+              <span class="tag">Attention to Detail</span>
+              <span class="tag">Communication</span>
+              <span class="tag"> Business Acumen</span>
+              <span class="tag">Time Management</span>
+              <span class="tag"> Stakeholder Management</span>
+              <span class="tag">Presentations</span>
+            </div>
+            <div class="skill-card">
+              <h4>Certifications</h4>
+              <span class="tag">Great Learning — Data Visualization with Python, Power BI </span>
+              <span class="tag">IBM — SQL and Relational Databases  </span>
+              <span class="tag">Microsoft — Career Essentials in Data Analysis, Business Analysis   </span>
+              <span class="tag">HP LIFE — AI for Beginners, Data Science and Analytics, Presenting Data   </span>
+              <span class="tag">IBM — SQL and Relational Databases  </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== EXPERIENCE ====== -->
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <p class="sub">Real-world practice and impact.</p>
+        <div class="panel timeline">
+          <div class="t-item">
+            <div class="t-h"><b>Data Analyst–Maruti Flex Traders LLP</b> <span class="pill">March 2025 – Present</span></div>
+            <div class="t-sub">Consolidated <b>1M+</b> records from SQL databases and  supplier files across 10 branches, standardizing formats, imputing missing values, 
+            and validating against government sources, improving reporting accuracy and consistency. 
+            <br>Built interactive Looker Studio dashboards (supplier, area, party) adopted by sales and management teams; reduced time-to-insight by 
+            <b>25%</b>, and supported strategic targeting of high-value buyers.   
+            <br>Automated weekly/monthly MIS reporting, delivering zero-defect reports and saving <b>10+</b> hours per month for stakeholders.   
+            <br>Presented actionable data-driven insights to leadership, influencing sales approaches and regional strategies.  </div>
+          </div>
+          <div class="t-item">
+            <div class="t-h"><b>Artificial  Intelligence Intern–Corizo Private Limited</b> <span class="pill">November 2024 – January 2025</span></div>
+            <div class="t-sub">Developed heart disease prediction models using <b>70,000</b> patient records; evaluated SVM, KNN, Decision Tree, Logistic Regression, 
+            Random Forest via cross-validation, achieving <b>75%</b> accuracy and reporting ROC-AUC for clinical decision support.   
+            <br>Engineered clustering and similarity models for <b>33,000</b> Spotify playlists; built a recommendation engine improving top-N engagement 
+            by <b>30%</b>.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PROJECTS ====== -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <p class="sub">Selected work. Replace covers with screenshots later.</p>
+        <div class="projects">
+          <!-- Project 1 -->
+          <article class="panel project">
+            <div class="cover" aria-label="BridgeConnect project cover placeholder">
+              <img src="Image\Screenshot 2025-08-26 150724.png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+            </div>
+            <div class="body">
+              <h4>Passenger Flow Prediction in Metro Systems</h4>
+              <p>Developed and deployed a dynamic feature fusion network (DFFN) to predict metro passenger flow, leveraging RF, LR, DT, and 
+                KNN classifiers on historical and real-time datasets to optimize scheduling and service quality. <br>Achieved improved prediction 
+                accuracy over baseline statistical models, enabling real-time resource allocation and supporting metro authorities in operational 
+                </p>
+              <div>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Pandas, Numpy, Matplotlib</span>
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="panel project">
+            <div class="cover" aria-label="Cooking Companion project cover placeholder">
+              <img src="Image\Screenshot 2025-08-26 205726.png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+            </div>
+            <div class="body">
+              <h4>Scheduler Agent</h4>
+              <p>AI agent to automatically add tasks and events to calendar just by chatting with it.<br>This  AI Agent add, delete, and retrieve tasks and events seamlessly using this AI-powered workflow.</p>
+              <div>
+                <span class="tag">AI Models</span>
+                <span class="tag">Gemini</span>
+              </div>
+            </div>
+          </article>
+
+           <!-- Project 2 -->
+          <article class="panel project">
+            <div class="cover" aria-label="Cooking Companion project cover placeholder">
+              <img src="Image\real.webp" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+            </div>
+            <div class="body">
+              <h4>Enhancing Real Estate Investment Decisions</h4>
+              <p>Forecasted Australian real estate prices with a dataset of 1,460 entries and 81 variables.<br> Performed EDA (5+ visualizations), trained 5 regression models and optimized hyperparameters</p>
+              <div>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Pandas, Numpy, Matplotlib</span>
+                <span class="tag">Python</span>
+                <span class="tag">Scikit-learn</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel project">
+            <div class="cover" aria-label="Cooking Companion project cover placeholder">
+              <img src="Image\FIFA.jpg" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+            </div>
+            <div class="body">
+              <h4>FIFA Data Analysis</h4>
+              <p>This project analyzed a comprehensive FIFA 20 player dataset of 18,278 players using Python. <br>Uncovering key performance insights through advanced data preprocessing, visualization and statistical methods</p>
+              <div>
+                <span class="tag">Pandas, Numpy, Matplotlib</span>
+                <span class="tag">Python</span>
+                <span class="tag">Scikit-learn</span>
+              </div>
+            </div>
+          </article>
+          
+          
+          <!-- Project 3 -->
+          <article class="panel project">
+            <div class="cover" aria-label="Customer Churn Prediction project cover placeholder">
+              <img src="Image\loan.gif" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+            </div>
+            <div class="body">
+              <h4>Prediction of Loan Transaction</h4>
+              <p>Built a loan repayment prediction system using 209,593 records and 37 features. <br>Conducted feature engineering and model tuning.  </p>
+              <div>
+                <span class="tag">Python</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Pandas, Numpy, Matplotlib</span>
+                <span class="tag">Scikit-learn</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+     <!-- ====== JOB SIMULATION ====== -->
+    <section id="Simulations">
+      <div class="container">
+        <h2 class="section-title">Job Simulations</h2>
+        <div class="projects">
+          <!-- Project 1 -->
+          <article class="panel project">
+            <div class="cover" aria-label="BridgeConnect project cover placeholder">
+              <img src="Image\download3.png" alt="BridgeConnect project cover" style="width:100%; height:200px;">
+            </div>
+            <div class="body">
+              <h4>Data Analytics & Visualization Simulations<br>PwC, Quantium, Accenture</h4>
+              <p>Created dashboards and hypothesis tests; surfaced insights on business datasets, influencing process recommendations and increasing 
+              project stakeholder satisfaction. </p>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="panel project">
+            <div class="cover" aria-label="Cooking Companion project cover placeholder">
+              <img src="Image\download (1).png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+            </div>
+            <div class="body">
+              <h4>Gen AI Financial Chatbot<br>BCG</h4>
+              <p>Enhanced chatbot for financial queries, automating responses for 80% of intents; added retrieval and routing, tested accuracy on program 
+              dataset.   </p>
+            </div>
+          </article>
+
+           <!-- Project 3 -->
+          <article class="panel project">
+            <div class="cover" aria-label="Customer Churn Prediction project cover placeholder">
+              <img src="Image\download.png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+            </div>
+            <div class="body">
+              <h4> Data Visualization Simulation<br>TCS</h4>
+              <p>Improved KPI comprehension scores by 30% through targeted design and storytelling, measured by simulated client assessment.  </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    
+
+    <!-- ====== EDUCATION ====== -->
+    <section id="education">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="panel timeline">
+          <div class="t-item">
+            <div class="t-h"><b>MCA (Master of Computer Applications)</b> <span class="pill">CGPA: 8.71/10</span></div>
+            <div class="t-sub">Rajarajeshwari College of Engineering — 2023–2025</div>
+          </div>
+          <div class="t-item">
+            <div class="t-h"><b>BCA (Bachelor of Computer Applications)</b> <span class="pill">CGPA: 8.27/10</span></div>
+            <div class="t-sub">Darshan Degree College — 2019–2022</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== ACHIEVEMENTS ====== -->
+    <section id="achievements">
+      <div class="container">
+        <h2 class="section-title">Achievements</h2>
+        <div class="panel" style="padding:16px">
+          <p><b>Publication</b> — Published research on "Passenger Flow Prediction in Metro System Using Dynamic Feature Fusion Network" in Shanlax International Journal of Arts, Science and Humanities, demonstrating expertise in data-driven modeling for public transport systems.</p>
+          <p><b>NSS</b> — Attended two Camps of NSS held under the campaign ‘Youth for Science and Scientific Attitude’ by Bangalore University.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Shashikiran M <a target="_blank" rel="noopener"></a>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if(href.length > 1){
+          e.preventDefault();
+          document.querySelector(href)?.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    // Mobile menu toggle — shows nav list on small screens
+    const menuBtn = document.getElementById('menuBtn');
+    const nav = document.querySelector('header nav ul');
+    menuBtn?.addEventListener('click',()=>{
+      const isOpen = getComputedStyle(nav).display !== 'none';
+      nav.style.display = isOpen ? 'none' : 'flex';
+    });
+
+    // Current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- ====== HOW TO REPLACE PLACEHOLDERS ======
+    1) HERO IMAGE: Replace the <figure class="hero-img"> with <img src="assets/hero.jpg" alt="Shashikiran M" class="hero-img" style="object-fit:cover"> and remove inner figcaption.
+    2) ABOUT IMAGE: Replace the second .hero-img with an <img> of your choice.
+    3) PROJECT COVERS: Replace each .cover div with an <img src="assets/project-*.png" alt="..." class="cover" style="object-fit:cover">.
+    4) COLORS: Adjust theme in :root at the top (e.g., --brand) to match any personal color.
+    5) CONTACT FORM: If you don't want FormSubmit, set action="mailto:..." and remove the hidden inputs.
+  -->
+</body>
+</html>
