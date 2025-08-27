@@ -134,6 +134,10 @@
     .timeline{position:relative;padding:10px 10px 10px 24px}
     .timeline::before{content:"";position:absolute;left:12px;top:0;bottom:0;width:2px;background:linear-gradient(var(--brand),transparent)}
     .t-item{position:relative;margin:0 0 16px;padding-left:12px}
+    .t-item::before {
+  display: none !important;
+  content: none !important;
+}
     .t-h{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
     .t-h b{font-size:1rem}
     .t-h .pill{font-size:.78rem}
@@ -547,6 +551,7 @@
   </script>
 </body>
 </html>
+
 
 
 
