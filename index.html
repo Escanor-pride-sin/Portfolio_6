@@ -131,13 +131,46 @@
     .skill-card h4{margin:0 0 .5rem;font-size:1rem}
 
     /* ====== Timeline (Education & Experience) ====== */
-    .timeline{position:relative;padding:10px 10px 10px 24px}
-    .timeline::before{content:"";position:absolute;left:12px;top:0;bottom:0;width:2px;background:linear-gradient(var(--brand),transparent)}
-    .t-item{position:relative;margin:0 0 16px;padding-left:12px}
-    .t-item::before {
+   .timeline {
+  position:relative;
+  padding:10px 10px 10px 24px;
+}
+.timeline::before {
+  content:"";
+  position:absolute;
+  left:12px;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:linear-gradient(var(--brand),transparent);
+}
+.t-item {
+  position:relative;
+  margin:0 0 16px;
+  padding-left:12px;
+}
+.t-h {
+  display:flex;
+  gap:.5rem;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.t-h b {
+  font-size:1rem;
+}
+.t-h .pill {
+  font-size:.78rem;
+}
+.t-sub {
+  color:var(--muted);
+  margin:.15rem 0 .4rem;
+}
+/* Optional: Hide timeline dots if not wanted */
+.t-item::before {
   display: none !important;
   content: none !important;
 }
+
     .t-h{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
     .t-h b{font-size:1rem}
     .t-h .pill{font-size:.78rem}
@@ -310,30 +343,37 @@
     </section>
 
     <!-- ====== EXPERIENCE ====== -->
-    <section id="experience">
-      <div class="container">
-        <h2 class="section-title">Experience</h2>
-        <p class="sub">Real-world practice and impact.</p>
-        <div class="panel timeline>
-          <div class="t-item">
-            <div class="t-h"><b>Data Analyst–Maruti Flex Traders LLP</b> <span class="pill">March 2025 – Present</span></div>
-            <div class="t-sub">Consolidated <b>1M+</b> records from SQL databases and  supplier files across 10 branches, standardizing formats, imputing missing values, 
-            and validating against government sources, improving reporting accuracy and consistency. 
-            <br>Built interactive Looker Studio dashboards (supplier, area, party) adopted by sales and management teams; reduced time-to-insight by 
-            <b>25%</b>, and supported strategic targeting of high-value buyers.   
-            <br>Automated weekly/monthly MIS reporting, delivering zero-defect reports and saving <b>10+</b> hours per month for stakeholders.   
-            <br>Presented actionable data-driven insights to leadership, influencing sales approaches and regional strategies.  </div>
-          </div>
-          <div class="t-item">
-            <div class="t-h"><b>Artificial  Intelligence Intern–Corizo Private Limited</b> <span class="pill">November 2024 – January 2025</span></div>
-            <div class="t-sub">Developed heart disease prediction models using <b>70,000</b> patient records; evaluated SVM, KNN, Decision Tree, Logistic Regression, 
-            Random Forest via cross-validation, achieving <b>75%</b> accuracy and reporting ROC-AUC for clinical decision support.   
-            <br>Engineered clustering and similarity models for <b>33,000</b> Spotify playlists; built a recommendation engine improving top-N engagement 
-            by <b>30%</b>.</div>
-          </div>
+  <!-- ====== EXPERIENCE ====== -->
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title">Experience</h2>
+    <p class="sub">Real-world practice and impact.</p>
+    <div class="panel timeline">
+      <div class="t-item">
+        <div class="t-h">
+          <b>Data Analyst–Maruti Flex Traders LLP</b> 
+          <span class="pill">March 2025 – Present</span>
+        </div>
+        <div class="t-sub">
+          Consolidated <b>1M+</b> records from SQL databases and supplier files across 10 branches, standardizing formats, imputing missing values, and validating against government sources, improving reporting accuracy and consistency.<br>
+          Built interactive Looker Studio dashboards (supplier, area, party) adopted by sales and management teams; reduced time-to-insight by <b>25%</b>, and supported strategic targeting of high-value buyers.<br>
+          Automated weekly/monthly MIS reporting, delivering zero-defect reports and saving <b>10+</b> hours per month for stakeholders.<br>
+          Presented actionable data-driven insights to leadership, influencing sales approaches and regional strategies.
         </div>
       </div>
-    </section>
+      <div class="t-item">
+        <div class="t-h">
+          <b>Artificial Intelligence Intern–Corizo Private Limited</b> 
+          <span class="pill">November 2024 – January 2025</span>
+        </div>
+        <div class="t-sub">
+          Developed heart disease prediction models using <b>70,000</b> patient records; evaluated SVM, KNN, Decision Tree, Logistic Regression, Random Forest via cross-validation, achieving <b>75%</b> accuracy and reporting ROC-AUC for clinical decision support.<br>
+          Engineered clustering and similarity models for <b>33,000</b> Spotify playlists; built a recommendation engine improving top-N engagement by <b>30%</b>.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- ====== PROJECTS ====== -->
     <section id="projects">
@@ -551,6 +591,7 @@
   </script>
 </body>
 </html>
+
 
 
 
