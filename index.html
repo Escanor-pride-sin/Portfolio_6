@@ -12,12 +12,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0e13;          /* page background */
-      --panel:#111520;       /* cards/nav */
-      --muted:#a6adbb;       /* secondary text */
-      --text:#eff3fb;        /* primary text */
-      --brand:#7c5cff;       /* accent */
-      --brand-2:#21d4fd;     /* gradient 2 */
+      --bg:#0b0e13;
+      --panel:#111520;
+      --muted:#a6adbb;
+      --text:#eff3fb;
+      --brand:#7c5cff;
+      --brand-2:#21d4fd;
       --ring:rgba(124,92,255,.4);
       --ok:#2ecc71; --warn:#f1c40f; --danger:#e74c3c;
       --shadow:0 10px 30px rgba(0,0,0,.35);
@@ -45,10 +45,57 @@
     .brand{display:flex;align-items:center;gap:.75rem;font-weight:700;letter-spacing:.2px}
     .brand .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;box-shadow:0 8px 24px var(--ring)}
     .brand .logo span{font-weight:800;color:#fff}
-    .nav ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
+    .nav ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0;transition:all .3s;}
     .nav a{color:#dbe3f5;padding:.5rem .75rem;border-radius:10px;display:inline-block}
     .nav a:hover{background:rgba(255,255,255,.06)}
     .menu-btn{display:none}
+
+    /* ====== Mobile Nav ====== */
+    @media (max-width: 640px){
+      .nav ul{
+        display:none;
+        position:absolute;
+        top:60px;
+        right:4%;
+        background:var(--panel);
+        border:1px solid rgba(255,255,255,.12);
+        border-radius:14px;
+        flex-direction:column;
+        gap:0;
+        width:180px;
+        box-shadow:var(--shadow);
+        z-index:100;
+        padding:0.5rem 0;
+        animation:slideDown .25s;
+      }
+      .nav ul.open{
+        display:flex;
+      }
+      .nav ul li{
+        width:100%;
+      }
+      .nav ul li a{
+        width:100%;
+        display:block;
+        padding:.9rem 1.2rem;
+        border-radius:0;
+      }
+      .menu-btn{
+        display:inline-flex;align-items:center;gap:.5rem;
+        background:rgba(255,255,255,.06);
+        color:#e9eeff;
+        border:1px solid rgba(255,255,255,.12);
+        font-size:1rem;
+        font-weight:600;
+        border-radius:12px;
+        padding:.6rem 1rem;
+        cursor:pointer;
+      }
+      @keyframes slideDown {
+        from {transform:translateY(-10px); opacity:0;}
+        to {transform:translateY(0); opacity:1;}
+      }
+    }
 
     /* ====== Hero ====== */
     .hero{padding:80px 0 40px}
@@ -120,10 +167,26 @@
       .contact{grid-template-columns:1fr}
     }
     @media (max-width: 640px){
-      .nav ul{display:none}
-      .menu-btn{display:inline-flex;align-items:center;gap:.5rem}
       .projects{grid-template-columns:1fr}
       .skill-groups{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+      .hero{padding:40px 0 20px}
+      .section-title{font-size:1.2rem;}
+      .panel{padding:10px;}
+      .kv{grid-template-columns:1fr;}
+      .hero-img{min-height:160px;}
+      .card-hero{padding:10px;}
+      .lead{font-size:.98rem;}
+      .cta{gap:.5rem;}
+      .project .cover{aspect-ratio:16/10;}
+    }
+    @media (max-width: 420px){
+      .container{width:98%;}
+      .panel{padding:6px;}
+      .hero{padding:20px 0 10px;}
+      .section-title{font-size:1rem;}
+      .lead{font-size:.92rem;}
+      .btn,.btn-primary,.btn-ghost{padding:.6rem .7rem;font-size:.95rem;}
     }
   </style>
 </head>
@@ -136,7 +199,7 @@
         <span>Shashikiran M</span>
       </div>
       <nav aria-label="Primary">
-        <ul>
+        <ul id="mainNav">
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#experience">Experience</a></li>
@@ -162,12 +225,10 @@
             <a class="btn btn-ghost" href="https://mail.google.com/mail/?view=cm&fs=1&to=shashikiranm611@gmail.com" target="_blank">Email Me</a>
             <a class="btn btn-ghost" href="https://www.linkedin.com/in/shashi611" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             <a class="btn btn-ghost" href="https://github.com/Escanor-pride-sin?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
-
           </div>
         </div>
         <div class="card-hero">
-          <!-- Replace the placeholder below with your real portrait or banner later -->
-              <img src="Image\ways-to-earn-power-bi-skills-for-data-analyst.png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+          <img src="Image\ways-to-earn-power-bi-skills-for-data-analyst.png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
         </div>
       </div>
     </section>
@@ -190,7 +251,6 @@
             </div>
           </div>
           <div class="panel">
-            <!-- Optional profile image / collage -->
             <div class="hero-img" style="min-height:260px">
               <div>
                 <img src="Image\WhatsApp Image 2025-08-26 at 5.25.14 PM.jpeg" alt="BridgeConnect project cover" style="width:100%; height:350px;">
@@ -284,7 +344,8 @@
               <img src="Image\Screenshot 2025-08-26 150724.png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
             </div>
             <div class="body">
-              <h4>Passenger Flow Prediction in Metro Systems</h4>
+              <h4><a href="https://github.com/Escanor-pride-sin/Passenger-Flow-Prediction-in-Metro-Systems" target="_blank">Passenger Flow Prediction in Metro Systems</a>
+</h4>
               <p>Developed and deployed a dynamic feature fusion network (DFFN) to predict metro passenger flow, leveraging RF, LR, DT, and 
                 KNN classifiers on historical and real-time datasets to optimize scheduling and service quality. <br>Achieved improved prediction 
                 accuracy over baseline statistical models, enabling real-time resource allocation and supporting metro authorities in operational 
@@ -305,7 +366,7 @@
               <img src="Image\Screenshot 2025-08-26 205726.png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
             </div>
             <div class="body">
-              <h4>Scheduler Agent</h4>
+              <h4><a href="https://github.com/Escanor-pride-sin/N8N-Scheduler-Agent" target="_blank">Scheduler Agent</a></h4>
               <p>AI agent to automatically add tasks and events to calendar just by chatting with it.<br>This  AI Agent add, delete, and retrieve tasks and events seamlessly using this AI-powered workflow.</p>
               <div>
                 <span class="tag">AI Models</span>
@@ -320,7 +381,8 @@
               <img src="Image\real.webp" alt="BridgeConnect project cover" style="width:100%; height:auto;">
             </div>
             <div class="body">
-              <h4>Enhancing Real Estate Investment Decisions</h4>
+              <h4><a href="https://github.com/Escanor-pride-sin/Enhancing-Real-Estate-Investment-Decisions" target="_blank">Enhancing Real Estate Investment Decisions</a></h4>
+
               <p>Forecasted Australian real estate prices with a dataset of 1,460 entries and 81 variables.<br> Performed EDA (5+ visualizations), trained 5 regression models and optimized hyperparameters</p>
               <div>
                 <span class="tag">Machine Learning</span>
@@ -336,7 +398,7 @@
               <img src="Image\FIFA.jpg" alt="BridgeConnect project cover" style="width:100%; height:auto;">
             </div>
             <div class="body">
-              <h4>FIFA Data Analysis</h4>
+              <h4><a href="https://github.com/Escanor-pride-sin/FIFA-Data-Analysis" target="_blank">FIFA Data Analysis</a></h4>
               <p>This project analyzed a comprehensive FIFA 20 player dataset of 18,278 players using Python. <br>Uncovering key performance insights through advanced data preprocessing, visualization and statistical methods</p>
               <div>
                 <span class="tag">Pandas, Numpy, Matplotlib</span>
@@ -353,7 +415,7 @@
               <img src="Image\loan.gif" alt="BridgeConnect project cover" style="width:100%; height:auto;">
             </div>
             <div class="body">
-              <h4>Prediction of Loan Transaction</h4>
+              <h4><a href="https://github.com/Escanor-pride-sin/Prediction-of-Loan-Transaction" target="_blank">Prediction of Loan Transaction</a></h4>
               <p>Built a loan repayment prediction system using 209,593 records and 37 features. <br>Conducted feature engineering and model tuning.  </p>
               <div>
                 <span class="tag">Python</span>
@@ -410,9 +472,6 @@
       </div>
     </section>
 
-
-    
-
     <!-- ====== EDUCATION ====== -->
     <section id="education">
       <div class="container">
@@ -456,28 +515,32 @@
         if(href.length > 1){
           e.preventDefault();
           document.querySelector(href)?.scrollIntoView({behavior:'smooth', block:'start'});
+          // If mobile nav is open, close it after click
+          if(window.innerWidth <= 640){
+            document.getElementById('mainNav').classList.remove('open');
+          }
         }
       });
     });
 
     // Mobile menu toggle — shows nav list on small screens
     const menuBtn = document.getElementById('menuBtn');
-    const nav = document.querySelector('header nav ul');
+    const nav = document.getElementById('mainNav');
     menuBtn?.addEventListener('click',()=>{
-      const isOpen = getComputedStyle(nav).display !== 'none';
-      nav.style.display = isOpen ? 'none' : 'flex';
+      nav.classList.toggle('open');
+    });
+
+    // Close mobile nav when clicking outside
+    document.addEventListener('click', function(e){
+      if(window.innerWidth <= 640){
+        if(!nav.contains(e.target) && !menuBtn.contains(e.target)){
+          nav.classList.remove('open');
+        }
+      }
     });
 
     // Current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-
-  <!-- ====== HOW TO REPLACE PLACEHOLDERS ======
-    1) HERO IMAGE: Replace the <figure class="hero-img"> with <img src="assets/hero.jpg" alt="Shashikiran M" class="hero-img" style="object-fit:cover"> and remove inner figcaption.
-    2) ABOUT IMAGE: Replace the second .hero-img with an <img> of your choice.
-    3) PROJECT COVERS: Replace each .cover div with an <img src="assets/project-*.png" alt="..." class="cover" style="object-fit:cover">.
-    4) COLORS: Adjust theme in :root at the top (e.g., --brand) to match any personal color.
-    5) CONTACT FORM: If you don't want FormSubmit, set action="mailto:..." and remove the hidden inputs.
-  -->
 </body>
 </html>
