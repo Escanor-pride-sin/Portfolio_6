@@ -12,34 +12,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
      :root {
-      --bg: #00223b;           /* soft minty green background */
-      --panel: #0b1738;        /* clean white for cards/nav */
-      --muted: #005d15;        /* muted green-gray for secondary text */
-      --text: #fff;         /* dark forest green for main text */
-      --brand: #024306;        /* vibrant green (emerald) for accents */
-      --brand-2: #57b15a;      /* soft green gradient accent */
-      --ring: rgba(52, 211, 153, 0.35);  /* light emerald ring */
-      --ok: #10b981;           /* success green */
-      --warn: #f59e0b;         /* warm yellow for warnings */
-      --danger: #ef4444;       /* red for danger */
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);  /* lighter, softer shadow */
+      --bg: #00223b;
+      --panel: #0b1738;
+      --muted: #005d15;
+      --text: #fff;
+      --brand: #024306;
+      --brand-2: #57b15a;
+      --ring: rgba(52, 211, 153, 0.35);
+      --ok: #10b981;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
-
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body {
-  margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
-  background: var(--panel);
-  color: var(--text);
-  line-height: 1.6;
-}
-   a{color:var(--brand);text-decoration:none}
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+      background: var(--panel);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a{color:var(--brand);text-decoration:none}
     a:hover {
-      color: var(--bg);     /* changes to your secondary brand color */
-      transform: scale(1.03);   /* subtle zoom effect */
-    }    
+      color: var(--bg);
+      transform: scale(1.03);
+    }
     img{max-width:100%;display:block}
     .container{width:min(1100px, 92%);margin-inline:auto}
     .pill{border:1px solid rgb(30 46 73);padding:.45rem 1.7rem;border-radius:999px;display:inline-flex;gap:.5rem;align-items:center;color:var(--muted)}
@@ -57,28 +56,87 @@
     .menu-btn{display:none}
 
     /* ====== Hero ====== */
-    .hero{padding:80px 0 40px}
-    .grid-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+    .hero{
+      position: relative;
+      overflow: hidden;
+      padding-top: 8rem;
+      padding-bottom: 6rem;
+      text-align: left;
+      color: #fff;
+      min-height: 400px;
+    }
+    .grid-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;animation: bounceIn 1s ease-out both;justify-items: start;}
     .kicker{color:var(--muted);margin:0 0 .5rem}
     h1{font-size:clamp(28px, 4vw, 46px);line-height:1.15;margin:.3rem 0 1rem}
     .lead{font-size:1.05rem;color:#ffffff;margin:0 0 1.4rem}
     .cta{display:flex;gap:.8rem;flex-wrap:wrap}
     .btn{appearance:none;border:0;cursor:pointer;font-weight:600;border-radius:12px;padding:.9rem 1rem}
     .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;box-shadow:0 12px 30px var(--ring)}
-     .btn-ghost {
-     background: rgba(255,255,255,.06);
-     color: #fff; /* Change from #1e2e49 to white */
-     border: 1px solid rgb(38 114 42);
-     }
+    .btn-ghost {
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      border: 1px solid rgb(38 114 42);
+    }
     .card-hero{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:18px;box-shadow:var(--shadow);padding:18px}
     .hero-img{aspect-ratio:1.3/1;border-radius:14px;background:linear-gradient(135deg, rgba(124,92,255,.18), rgba(33,212,253,.18));display:grid;place-items:center;color:#cfd6e6;font-size:.95rem;border:1px dashed rgba(255,255,255,.18)}
     .grid-hero h1{color: #ffffff;}
+
+    /* Graph background in hero */
+    .graph-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+      background-image: linear-gradient(to right, rgb(0 0 0 / 6%) 1px, transparent 1px), linear-gradient(to top, rgba(16, 16, 16, 0.06) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    .bar {
+      position: absolute;
+      bottom: 0;
+      width: 16px;
+      background: rgb(171 55 27);
+      border-radius: 6px;
+      animation: bounce 2.5s infinite ease-in-out;
+    }
+    .bar1 { left: 78%; height: 45%; animation-delay: 0s; }
+    .bar2 { left: 83%; height: 65%; background: rgb(33 150 243 / 72%); animation-delay: 0.4s; }
+    .bar3 { left: 88%; height: 35%; animation-delay: 0.8s; }
+    .bar4 { left: 93%; height: 55%; background: rgb(33 150 243 / 72%); animation-delay: 0.6s; }
+    @keyframes bounce {
+      0%, 100% { transform: scaleY(0.6); }
+      50% { transform: scaleY(1.1); }
+    }
+    .line-chart {
+      position: absolute;
+      bottom: -5%;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      opacity: 0.4;
+      z-index: 0;
+      animation: moveLine 8s linear infinite;
+    }
+    .line-chart polyline {
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: drawLine 4s linear infinite;
+    }
+    @keyframes drawLine {
+      0% { stroke-dashoffset: 400; }
+      100% { stroke-dashoffset: 0; }
+    }
+
     /* ====== Sections ====== */
     section{padding:56px 0}
     .section-title{font-size:1.6rem;margin:0 0 18px}
     .sub{color:var(--muted);margin:0 0 24px}
     .panel{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:18px;box-shadow:var(--shadow)}
-    
+    .container h2{color: #ffffff;}
+
     /* === Section Divider === */
     .section-divider {
       width: 80%;
@@ -102,7 +160,7 @@
     .kv div{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px}
     .kv b{display:block;font-size:.85rem;color:#dfe7fb}
     .kv small{color:#d7d9de}
-    .container h2{color: #ffffff;}
+
     /* ====== Skills ====== */
     .skills{display:grid;grid-template-columns:1fr;gap:16px}
     .skill-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:16px}
@@ -144,35 +202,27 @@
       transform: translateY(20px);
       transition: all 0.6s ease-out;
     }
-
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     .project:hover {
       transform: translateY(-6px);
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
       transition: all 0.3s ease-in-out;
     }
-
     .btn, .pill {
       transition: background 0.3s ease, transform 0.2s ease;
     }
-
     .btn:hover {
       transform: scale(1.03);
     }
-
     .pill:hover {
       background: rgba(255, 255, 255, 0.1);
     }
-
-    /* === Nav Underline Hover === */
     .nav a {
       position: relative;
     }
-
     .nav a::after {
       content: '';
       position: absolute;
@@ -185,22 +235,17 @@
       transform-origin: right;
       transition: transform 0.3s ease;
     }
-
     .nav a:hover::after {
       transform: scaleX(1);
       transform-origin: left;
     }
-
-    /* === Project image zoom on hover === */
     .project .cover {
       overflow: hidden;
       position: relative;
     }
-
     .project .cover:hover {
       cursor: pointer;
     }
-
     .project .cover::after {
       content: "";
       display: block;
@@ -209,221 +254,20 @@
       background: rgba(255,255,255,0.04);
       transition: background 0.3s ease;
     }
-
     .project .cover:hover::after {
       background: rgba(255,255,255,0.08);
     }
-
     .project .cover img {
       transition: transform 0.5s ease;
     }
-
     .project .cover:hover img {
       transform: scale(1.05);
     }
-
     @keyframes bounceIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.95) translateY(30px);
-      }
-      60% {
-        opacity: 1;
-        transform: scale(1.02) translateY(-10px);
-      }
-      100% {
-        transform: scale(1) translateY(0);
-      }
+      0% { opacity: 0; transform: scale(0.95) translateY(30px);}
+      60% { opacity: 1; transform: scale(1.02) translateY(-10px);}
+      100% { transform: scale(1) translateY(0);}
     }
-
-    .grid-hero {
-      animation: bounceIn 1s ease-out both; 
-    }
-
-    .card-hero {
-      background: white; /* keep card white so image pops */
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      padding: 18px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* statistical background pattern */
-    .card-hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px),
-        linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
-      background-size: 20px 20px; /* grid spacing */
-      z-index: 0;
-    }
-
-    .card-hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle at 20% 30%, rgb(0 0 0 / 12%) 0px, #cc99eb59 200px), 
-        radial-gradient(circle at 80% 70%, rgba(33, 150, 243, 0.12) 0px, transparent 250px);
-      z-index: 0;
-    }
-
-    .card-hero img {
-      position: relative;
-      z-index: 1; /* keep image above background */
-      border-radius: 12px;
-    }
-
-    .card-hero.showcase {
-      position: relative;
-      background: white;
-      border: 1px solid rgb(0 0 0 / 99%);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      padding: 40px 20px;
-      height: 300px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    /* Grid background */
-    .card-hero.showcase::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px),
-        linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px);
-      background-size: 20px 20px;
-      z-index: 0;
-    }
-
-    .showcase-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .showcase-content h2 {
-      font-size: 2rem;
-      margin: 0;
-      background: #0b1738;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .showcase-content p {
-      margin: 8px 0 0;
-      font-size: 1rem;
-      color: #333;
-    }
-
-    /* Graph elements */
-    .graph-elements {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .bar {
-      position: absolute;
-      bottom: 0;
-      width: 20px;
-      background: rgba(97,218,0,0.5);
-      border-radius: 4px 4px 0 0;
-    }
-
-    .bar1 { left: 20px; height: 60px; }
-    .bar2 { left: 60px; height: 100px; background: rgba(33,150,243,0.5); }
-    .bar3 { left: 100px; height: 80px; }
-
-    .line-chart {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 60%;
-    }
-
-    .hero {
-     position: relative;
-     overflow: hidden;
-     padding-top: 8rem;
-     padding-bottom: 6rem;
-     text-align: left;      /* Change from center to left */
-     color: #fff;
-     }
-
-.grid-hero {
-  animation: bounceIn 1s ease-out both;
-  justify-items: start;  /* Add this to align grid items left */
-}
-    /* Graph background in hero */
-    .graph-elements {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0; /* push behind hero text */
-      background-image: linear-gradient(to right, rgb(0 0 0 / 6%) 1px, transparent 1px), linear-gradient(to top, rgba(16, 16, 16, 0.06) 1px, transparent 1px);
-      background-size: 50px 50px; /* spacing of grid */
-    }
-
-    .bar {
-      position: absolute;
-      bottom: 0;
-      width: 16px; /* wider bars */
-      background: rgb(171 55 27);
-      border-radius: 6px;
-      animation: bounce 2.5s infinite ease-in-out;
-    }
-
-    .bar1 { left: 78%; height: 45%; animation-delay: 0s; }
-    .bar2 { left: 83%; height: 65%; background: rgb(33 150 243 / 72%); animation-delay: 0.4s; }
-    .bar3 { left: 88%; height: 35%; animation-delay: 0.8s; }
-    .bar4 { left: 93%; height: 55%; background: rgb(33 150 243 / 72%); animation-delay: 0.6s; }
-
-    @keyframes bounce {
-      0%, 100% { transform: scaleY(0.6); }
-      50% { transform: scaleY(1.1); }
-    }
-
-    .line-chart {
-      position: absolute;
-      bottom: -5%;
-      left: 0;
-      width: 100%;
-      height: 50%;
-      opacity: 0.4; /* lighter so it's subtle */
-      z-index: 0;   /* stays behind */
-      animation: moveLine 8s linear infinite;
-    }
-
-    .line-chart polyline {
-      stroke-dasharray: 400;   /* length of the dash pattern */
-      stroke-dashoffset: 400;  /* start hidden */
-      animation: drawLine 4s linear infinite;
-    }
-
-    @keyframes drawLine {
-      0% {
-        stroke-dashoffset: 400; /* hidden */
-      }
-      100% {
-        stroke-dashoffset: 0;   /* fully drawn */
-      }
-}
-    
 
     /* ====== Responsive ====== */
     @media (max-width: 980px){
@@ -432,38 +276,68 @@
       .about{grid-template-columns:1fr}
       .contact{grid-template-columns:1fr}
     }
+    @media (max-width: 800px){
+      .hero { min-height: 320px; }
+      .graph-elements { background-size: 30px 30px; }
+      .bar { width: 10px; }
+      .bar1 { left: 65%; }
+      .bar2 { left: 75%; }
+      .bar3 { left: 85%; }
+      .bar4 { left: 95%; }
+    }
     @media (max-width: 640px){
       .nav ul{display:none}
       .menu-btn{display:inline-flex;align-items:center;gap:.5rem}
       .projects{grid-template-columns:1fr}
       .skill-groups{grid-template-columns:1fr}
+      .hero { padding: 40px 0 20px; min-height: 220px;}
+      .grid-hero { gap: 20px; }
+      .grid-hero h1 { font-size: 2rem; }
+      .lead { font-size: 1rem; }
+      .cta { flex-direction: column; gap: .5rem; align-items: stretch; }
+      .graph-elements { height: 120px; min-height: 80px; background-size: 18px 18px; }
+      .bar { width: 7px; }
+      .bar1 { left: 60%; }
+      .bar2 { left: 70%; }
+      .bar3 { left: 80%; }
+      .bar4 { left: 90%; }
+      .line-chart { height: 40%; }
+    }
+    @media (max-width: 400px){
+      .hero { padding: 20px 0 10px; min-height: 120px;}
+      .graph-elements { height: 60px; min-height: 40px; background-size: 12px 12px; }
+      .bar { width: 5px; }
+      .bar1 { left: 55%; }
+      .bar2 { left: 65%; }
+      .bar3 { left: 75%; }
+      .bar4 { left: 85%; }
     }
   </style>
 </head>
 <body>
   <!-- ====== NAV ====== -->
-   <header>
-  <div class="container">
-    <div class="nav">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"><span>SM</span></div>
-        <span>Shashikiran M</span>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"><span>SM</span></div>
+          <span>Shashikiran M</span>
+        </div>
+        <nav aria-label="Primary">
+          <ul id="mainNav">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#Simulations">Job Simulation</a></li>
+            <li><a href="#achievements">Achievement</a></li>
+          </ul>
+        </nav>
+        <button class="menu-btn pill" id="menuBtn" aria-label="Open menu">☰ <span>Menu</span></button>
       </div>
-      <nav aria-label="Primary">
-        <ul id="mainNav">
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#Simulations">Job Simulation</a></li>
-          <li><a href="#achievements">Achivement</a></li>
-        </ul>
-      </nav>
-      <button class="menu-btn pill" id="menuBtn" aria-label="Open menu">☰ <span>Menu</span></button>
     </div>
-  </div>
-</header>
+  </header>
   <main>
     <!-- ====== HERO ====== -->
     <section class="hero container" id="home">
@@ -480,9 +354,7 @@
           </div>
         </div>
       </div>
-    </section>
-
-        <!-- Background graph elements -->
+      <!-- Responsive graph background INSIDE hero -->
       <div class="graph-elements">
         <div class="bar bar1"></div>
         <div class="bar bar2"></div>
@@ -521,7 +393,7 @@
             <div class="hero-img" style="min-height:260px">
               <div>
                 <img src="Image\WhatsApp Image 2025-08-26 at 5.25.14 PM.jpeg" alt="BridgeConnect project cover" style="width:100%; height:250px;">
-          </div>
+              </div>
             </div>
           </div>
         </div>
@@ -574,37 +446,36 @@
     </section>
 
     <!-- ====== EXPERIENCE ====== -->
-  <!-- ====== EXPERIENCE ====== -->
-<section id="experience">
-  <div class="container">
-    <h2 class="section-title">Experience</h2>
-    <p class="sub">Real-world practice and impact.</p>
-    <div class="panel timeline">
-      <div class="t-item">
-        <div class="t-h">
-          <b>Data Analyst–Maruti Flex Traders LLP</b> 
-          <span class="pill">March 2025 – Present</span>
-        </div>
-        <div class="t-sub">
-          Consolidated <b>1M+</b> records from SQL databases and supplier files across 10 branches, standardizing formats, imputing missing values, and validating against government sources, improving reporting accuracy and consistency.<br>
-          Built interactive Looker Studio dashboards (supplier, area, party) adopted by sales and management teams; reduced time-to-insight by <b>25%</b>, and supported strategic targeting of high-value buyers.<br>
-          Automated weekly/monthly MIS reporting, delivering zero-defect reports and saving <b>10+</b> hours per month for stakeholders.<br>
-          Presented actionable data-driven insights to leadership, influencing sales approaches and regional strategies.
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <p class="sub">Real-world practice and impact.</p>
+        <div class="panel timeline">
+          <div class="t-item">
+            <div class="t-h">
+              <b>Data Analyst–Maruti Flex Traders LLP</b> 
+              <span class="pill">March 2025 – Present</span>
+            </div>
+            <div class="t-sub">
+              Consolidated <b>1M+</b> records from SQL databases and supplier files across 10 branches, standardizing formats, imputing missing values, and validating against government sources, improving reporting accuracy and consistency.<br>
+              Built interactive Looker Studio dashboards (supplier, area, party) adopted by sales and management teams; reduced time-to-insight by <b>25%</b>, and supported strategic targeting of high-value buyers.<br>
+              Automated weekly/monthly MIS reporting, delivering zero-defect reports and saving <b>10+</b> hours per month for stakeholders.<br>
+              Presented actionable data-driven insights to leadership, influencing sales approaches and regional strategies.
+            </div>
+          </div>
+          <div class="t-item">
+            <div class="t-h">
+              <b>Artificial Intelligence Intern–Corizo Private Limited</b> 
+              <span class="pill">November 2024 – January 2025</span>
+            </div>
+            <div class="t-sub">
+              Developed heart disease prediction models using <b>70,000</b> patient records. evaluated SVM, KNN, Decision Tree, Logistic Regression, Random Forest via cross-validation, achieving <b>75%</b> accuracy and reporting ROC-AUC for clinical decision support.<br>
+              Engineered clustering and similarity models for <b>33,000</b> Spotify playlists. built a recommendation engine improving top-N engagement by <b>30%</b>.
+            </div>
+          </div>
         </div>
       </div>
-      <div class="t-item">
-        <div class="t-h">
-          <b>Artificial Intelligence Intern–Corizo Private Limited</b> 
-          <span class="pill">November 2024 – January 2025</span>
-        </div>
-        <div class="t-sub">
-          Developed heart disease prediction models using <b>70,000</b> patient records; evaluated SVM, KNN, Decision Tree, Logistic Regression, Random Forest via cross-validation, achieving <b>75%</b> accuracy and reporting ROC-AUC for clinical decision support.<br>
-          Engineered clustering and similarity models for <b>33,000</b> Spotify playlists; built a recommendation engine improving top-N engagement by <b>30%</b>.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <!-- ====== PROJECTS ====== -->
     <section id="projects">
@@ -618,8 +489,7 @@
               <img src="Image\Screenshot 2025-08-26 150724.png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
             </div>
             <div class="body">
-              <h4><a href="https://github.com/Escanor-pride-sin/Passenger-Flow-Prediction-in-Metro-Systems" target="_blank">Passenger Flow Prediction in Metro Systems</a>
-</h4>
+              <h4><a href="https://github.com/Escanor-pride-sin/Passenger-Flow-Prediction-in-Metro-Systems" target="_blank">Passenger Flow Prediction in Metro Systems</a></h4>
               <p>Developed and deployed a dynamic feature fusion network (DFFN) to predict metro passenger flow, leveraging RF, LR, DT, and 
                 KNN classifiers on historical and real-time datasets to optimize scheduling and service quality. <br>Achieved improved prediction 
                 accuracy over baseline statistical models, enabling real-time resource allocation and supporting metro authorities in operational 
@@ -650,16 +520,15 @@
             </div>
           </article>
 
-           <!-- Project 2 -->
+           <!-- Project 3 -->
           <article class="panel project">
             <div class="cover" aria-label="Cooking Companion project cover placeholder">
-              <a href="https://github.com/Escanor-pride-sin/Enhancing-Real-Estate-Investment-Decisions" target="_blank"></a>
-              <img src="Image\real.webp" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+              <a href="https://github.com/Escanor-pride-sin/Spotify-Songs-Genre-Segmentation" target="_blank"></a>
+              <img src="Image\SPOTIFY.jpg" alt="BridgeConnect project cover" style="width:100%; height:auto;">
             </div>
             <div class="body">
-              <h4><a href="https://github.com/Escanor-pride-sin/Enhancing-Real-Estate-Investment-Decisions" target="_blank">Enhancing Real Estate Investment Decisions</a></h4>
-
-              <p>Forecasted Australian real estate prices with a dataset of 1,460 entries and 81 variables.<br> Performed EDA (5+ visualizations), trained 5 regression models and optimized hyperparameters</p>
+              <h4><a href="https://github.com/Escanor-pride-sin/Spotify-Songs-Genre-Segmentation" target="_blank">Spotify-Songs-Genre-Segmentation</a></h4>
+              <p>Engineered clustering and similarity models for 33,000 Spotify playlists<br> Built a recommendation engine improving top-N engagement by 30%.</p>
               <div>
                 <span class="tag">Machine Learning</span>
                 <span class="tag">Pandas, Numpy, Matplotlib</span>
@@ -685,8 +554,7 @@
             </div>
           </article>
           
-          
-          <!-- Project 3 -->
+          <!-- Project 5 -->
           <article class="panel project">
             <div class="cover" aria-label="Customer Churn Prediction project cover placeholder">
               <a href="https://github.com/Escanor-pride-sin/Prediction-of-Loan-Transaction" target="_blank"></a>
@@ -710,7 +578,7 @@
      <!-- ====== JOB SIMULATION ====== -->
     <section id="Simulations">
       <div class="container">
-        <h2 class="section-title">Job Simulations</h2>
+        <h2 class="section-title">Job Simulation</h2>
         <div class="projects">
           <!-- Project 1 -->
           <article class="panel project">
@@ -770,7 +638,7 @@
     <!-- ====== ACHIEVEMENTS ====== -->
     <section id="achievements">
       <div class="container">
-        <h2 class="section-title">Achievements</h2>
+        <h2 class="section-title">Achievement</h2>
         <div class="panel" style="padding:16px">
           <p><b>Publication</b> — Published research on "Passenger Flow Prediction in Metro System Using Dynamic Feature Fusion Network" in Shanlax International Journal of Arts, Science and Humanities, demonstrating expertise in data-driven modeling for public transport systems.</p>
           <p><b>NSS</b> — Attended two Camps of NSS held under the campaign ‘Youth for Science and Scientific Attitude’ by Bangalore University.</p>
@@ -822,10 +690,4 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
 
