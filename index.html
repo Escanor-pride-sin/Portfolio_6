@@ -340,6 +340,17 @@
       .bar3 { left: 75%; }
       .bar4 { left: 85%; }
     }
+
+    /* ====== Mobile notice modal ====== */
+    #mobileNotice{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,10,0.55);z-index:9999;opacity:0;pointer-events:none;transition:opacity .18s ease}
+    #mobileNotice.visible{opacity:1;pointer-events:auto}
+    #mobileNotice .modal{background:var(--panel);border:1px solid rgba(255,255,255,.06);padding:20px;border-radius:12px;max-width:520px;width:92%;box-shadow:0 20px 50px rgba(0,0,0,.6)}
+    #mobileNotice h3{margin:0 0.4rem 6px;font-size:1.15rem}
+    #mobileNotice p{margin:0;color:var(--muted);line-height:1.5}
+    #mobileNotice .actions{display:flex;gap:.6rem;justify-content:flex-end;margin-top:14px}
+    #mobileNotice .actions .btn{padding:.5rem .8rem;border-radius:10px}
+    #mobileNotice .actions .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff}
+    #mobileNotice .actions .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.06);color:#dbe3f5}
   </style>
 </head>
 <body>
@@ -745,6 +756,18 @@
     </div>
   </footer>
 
+  <!-- Mobile Notice Modal -->
+  <div id="mobileNotice" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal">
+      <h3>For the best experience, please use a laptop or desktop</h3>
+      <p>This portfolio is optimized for larger screens. Some layouts and visual details may not display ideally on small mobile devices. We recommend viewing on a PC or laptop for full interactivity and visuals.</p>
+      <div class="actions">
+        <button class="btn btn-ghost" id="dismissMobileNotice">Continue on mobile</button>
+        <button class="btn btn-primary" id="viewAnyway">Open on desktop/laptop later</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -779,10 +802,43 @@
 
     // Current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile notice logic: show a polite modal on small screens recommending desktop/laptop
+    (function(){
+      const NOTICE_KEY = 'mobileNoticeDismissed_v1';
+      const notice = document.getElementById('mobileNotice');
+      const dismissBtn = document.getElementById('dismissMobileNotice');
+      const viewAnywayBtn = document.getElementById('viewAnyway');
+
+      function shouldShow(){
+        // show only on small viewports and when the user hasn't dismissed before
+        if(window.innerWidth > 640) return false;
+        try{ if(localStorage.getItem(NOTICE_KEY)) return false }catch(e){}
+        return true;
+      }
+
+      function hideNotice(persist=true){
+        notice.classList.remove('visible');
+        notice.setAttribute('aria-hidden','true');
+        if(persist){ try{ localStorage.setItem(NOTICE_KEY,'1') }catch(e){} }
+      }
+
+      // show after small delay so page loads first
+      if(shouldShow()){
+        setTimeout(()=>{ notice.classList.add('visible'); notice.setAttribute('aria-hidden','false') }, 500);
+      }
+
+      dismissBtn?.addEventListener('click', ()=> hideNotice(true));
+      viewAnywayBtn?.addEventListener('click', ()=> hideNotice(true));
+
+      // hide if viewport resizes to larger
+      window.addEventListener('resize', ()=>{
+        if(window.innerWidth > 640) hideNotice(false);
+      });
+    })();
   </script>
 </body>
 </html>
-
 
 
 
