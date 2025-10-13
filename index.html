@@ -46,14 +46,18 @@
 
     /* ====== Nav ====== */
     header{position:fixed;top:0;width:100%;z-index:50;background:rgb(30 46 73);backdrop-filter: blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:0.4rem 0}
-    .brand{display:flex;align-items:center;gap:.75rem;font-weight:700;letter-spacing:.2px}
-    .brand .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;box-shadow:0 8px 24px var(--ring)}
-    .brand .logo span{font-weight:800;color:#fff}
-    .nav ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
-    .nav a{color:#dbe3f5;padding:.5rem .75rem;border-radius:10px;display:inline-block}
-    .nav a:hover{background:rgba(255,255,255,.06)}
-    .menu-btn{display:none}
+  .nav{display:flex;align-items:center;justify-content:flex-start;padding:0.45rem 0;gap:.75rem;min-height:58px}
+  .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.2px}
+  .brand .logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;box-shadow:0 8px 24px var(--ring)}
+  .brand .logo span{font-weight:800;color:#fff}
+  .brand span{line-height:1;display:block;white-space:nowrap;font-size:.96rem}
+  /* push primary nav to the right */
+  .nav nav{margin-left:auto}
+  .nav ul{display:flex;gap:.7rem;list-style:none;margin:0;padding:0;align-items:center;flex-wrap:nowrap;overflow:hidden}
+  .nav li{white-space:nowrap}
+  .nav a{color:#dbe3f5;padding:.35rem .6rem;border-radius:8px;display:inline-block;font-weight:600;font-size:.92rem}
+  .nav a:hover{background:rgba(255,255,255,.04)}
+  .menu-btn{display:none}
 
     /* ====== Hero ====== */
     .hero{
@@ -161,11 +165,20 @@
     .kv b{display:block;font-size:.85rem;color:#dfe7fb}
     .kv small{color:#d7d9de}
 
-    /* ====== Skills ====== */
-    .skills{display:grid;grid-template-columns:1fr;gap:16px}
-    .skill-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:16px}
-    .skill-card{padding:16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
-    .skill-card h4{margin:0 0 .5rem;font-size:1rem}
+  /* ====== Skills ====== */
+  .skills{display:grid;grid-template-columns:1fr;gap:16px}
+  /* show three columns on larger screens to mirror the design in the provided image */
+  .skill-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:16px}
+  .skill-card{padding:18px;border-radius:14px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);min-height:120px}
+  .skill-card h4{margin:0 0 .75rem;font-size:1.02rem;display:flex;align-items:center;gap:.75rem}
+  .skill-icon{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:#eafff0;font-size:16px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 8px 20px var(--ring);transition:transform .18s ease,box-shadow .18s ease}
+  .skill-icon i{font-size:16px;color:#ffffff}
+  .skill-icon:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 20px 50px rgba(37,199,104,0.18),0 0 26px rgba(37,199,104,0.14)}
+  /* green pill tags for skills */
+  .skill-card .tag{display:inline-block;padding:.35rem .7rem;border-radius:999px;font-size:.82rem;color:#ffffff;background:rgba(6,100,21,.04);border:1px solid rgba(37, 199, 104, .12);margin:.28rem .35rem 0 0;transition:box-shadow .18s ease,transform .12s ease,border-color .12s ease}
+  .skill-card .tag:hover{box-shadow:0 10px 30px rgba(37,199,104,0.12),0 0 18px rgba(37,199,104,0.12);transform:translateY(-3px);border-color:rgba(37,199,104,0.5)}
+  /* reduce tag spacing within cards */
+  .skill-card > div{margin-top:6px}
 
     /* ====== Timeline (Education & Experience) ====== */
     .timeline{position:relative;padding:10px 10px 10px 24px}
@@ -176,6 +189,15 @@
     .t-h b{font-size:1rem}
     .t-h .pill{font-size:.78rem}
     .t-sub{color:#d7d9de;margin:.15rem 0 .4rem}
+
+  /* ====== Courses & Certificates ====== */
+  /* outer container uses existing .panel styling; inner columns are simple lists */
+  .certificates{padding:14px}
+  .cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .cert-column{padding:8px}
+  .cert-list{display:flex;flex-direction:column;gap:10px}
+  .cert-item{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.03);padding:12px;border-radius:10px;transition:transform .12s ease,box-shadow .18s ease,border-color .12s ease,background .12s ease}
+  .cert-item:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(37,199,104,0.12),0 0 26px rgba(37,199,104,0.08);border-color:rgba(37,199,104,0.45);background:rgba(37,199,104,0.02)}
 
     /* ====== Projects ====== */
     .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -193,8 +215,9 @@
     textarea{min-height:120px;resize:vertical}
     input:focus,textarea:focus{outline:2px solid var(--ring);border-color:transparent}
 
-    /* ====== Footer ====== */
-    footer{padding:8px 0;color:var(--text);border-top:1px solid rgba(255,255,255,.06);background: #0b1738;position: fixed;bottom: 0;width: 100%;}
+  /* ====== Footer ====== */
+  /* Footer should flow with the document (not fixed) */
+  footer{padding:8px 0;color:var(--text);border-top:1px solid rgba(255,255,255,.06);background: #0b1738;position: static;width: 100%;}
 
     /* === Animations === */
     .fade-in {
@@ -275,7 +298,10 @@
       .projects{grid-template-columns:repeat(2,1fr)}
       .about{grid-template-columns:1fr}
       .contact{grid-template-columns:1fr}
-    }
+        /* show collapsed menu earlier to avoid wrapping nav items */
+        .nav ul{display:none}
+        .menu-btn{display:inline-flex;align-items:center;gap:.5rem}
+      }
     @media (max-width: 800px){
       .hero { min-height: 320px; }
       .graph-elements { background-size: 30px 30px; }
@@ -288,6 +314,8 @@
     @media (max-width: 640px){
       .nav ul{display:none}
       .menu-btn{display:inline-flex;align-items:center;gap:.5rem}
+      /* mobile nav opens when .open is set on #mainNav */
+      #mainNav.open{display:flex;position:absolute;top:64px;right:16px;background:rgba(11,23,56,.96);padding:12px;border-radius:10px;flex-direction:column;gap:.5rem;box-shadow:0 8px 30px rgba(0,0,0,.4)}
       .projects{grid-template-columns:1fr}
       .skill-groups{grid-template-columns:1fr}
       .hero { padding: 40px 0 20px; min-height: 220px;}
@@ -328,6 +356,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
+            <li><a href="#courses">Course & Certificates</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#Simulations">Job Simulation</a></li>
@@ -409,37 +438,69 @@
         <div class="panel skills">
           <div class="skill-groups">
             <div class="skill-card">
-              <h4>Programming</h4>
-              <span class="tag">Python</span>
-              <span class="tag">HTML</span>
-              <span class="tag">SQL</span>
+              <h4><span class="skill-icon"><i class="fas fa-database" aria-hidden="true"></i></span> Data Tools</h4>
+              <div>
+                <span class="tag">MySQL</span>
+                <span class="tag">Power BI</span>
+                <span class="tag">Looker Studio</span>
+                <span class="tag">Power Query</span>
+                <span class="tag">Google Sheets</span>
+                <span class="tag">Microsoft Excel</span>
+              </div>
             </div>
+
             <div class="skill-card">
-              <h4>Tools & Platforms</h4>
-              <span class="tag">Microsoft Excel</span>
-              <span class="tag">Google Sheets</span>
-              <span class="tag">MySQL</span>
-              <span class="tag">Jupyter Notebook</span>
-              <span class="tag">Looker Studio</span>
-              <span class="tag">Power BI</span>
+              <h4><span class="skill-icon"><i class="fab fa-python" aria-hidden="true"></i></span> Programming</h4>
+              <div>
+                <span class="tag">Python (pandas, NumPy, matplotlib, seaborn, scikit-learn)</span>
+                <span class="tag">HTML</span>
+                <span class="tag">SQL</span>
+              </div>
             </div>
+
             <div class="skill-card">
-              <h4>Soft Skills</h4>
-              <span class="tag"> Analytical Thinking</span>
-              <span class="tag">Attention to Detail</span>
-              <span class="tag">Communication</span>
-              <span class="tag"> Business Acumen</span>
-              <span class="tag">Time Management</span>
-              <span class="tag"> Stakeholder Management</span>
-              <span class="tag">Presentations</span>
+              <h4><span class="skill-icon"><i class="fas fa-robot" aria-hidden="true"></i></span> Machine Learning</h4>
+              <div>
+                <span class="tag">Classification</span>
+                <span class="tag">Regression</span>
+                <span class="tag">Model Evaluation</span>
+                <span class="tag">Feature Engineering</span>
+                <span class="tag">Data Modeling</span>
+              </div>
             </div>
+
             <div class="skill-card">
-              <h4>Certifications</h4>
-              <span class="tag">Great Learning — Data Visualization with Python, Power BI </span>
-              <span class="tag">IBM — SQL and Relational Databases  </span>
-              <span class="tag">Microsoft — Career Essentials in Data Analysis, Business Analysis   </span>
-              <span class="tag">HP LIFE — AI for Beginners, Data Science and Analytics, Presenting Data   </span>
-              <span class="tag">IBM — SQL and Relational Databases  </span>
+              <h4><span class="skill-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></span> Data Analytics</h4>
+              <div>
+                <span class="tag">ETL</span>
+                <span class="tag">EDA</span>
+                <span class="tag">KPI Reporting & Design</span>
+                <span class="tag">Data Visualization</span>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <h4><span class="skill-icon"><i class="fas fa-robot" aria-hidden="true"></i></span> AI & Automation Tools</h4>
+              <div>
+                <span class="tag">N8N</span>
+                <span class="tag">Lovable</span>
+                <span class="tag">Emergent</span>
+                <span class="tag">Zapier</span>
+                <span class="tag">Numerous</span>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <h4><span class="skill-icon"><i class="fas fa-user-friends" aria-hidden="true"></i></span> Soft Skills</h4>
+              <div>
+                <span class="tag">Analytical Thinking</span>
+                <span class="tag">Attention to Detail</span>
+                <span class="tag">Communication</span>
+                <span class="tag">Business Acumen</span>
+                <span class="tag">Stakeholder Management</span>
+                <span class="tag">Presentations</span>
+                <span class="tag">Time Management</span>
+              </div>
             </div>
           </div>
         </div>
@@ -472,6 +533,36 @@
             <div class="t-sub">
               Developed heart disease prediction models using <b>70,000</b> patient records. evaluated SVM, KNN, Decision Tree, Logistic Regression, Random Forest via cross-validation, achieving <b>75%</b> accuracy and reporting ROC-AUC for clinical decision support.<br>
               Engineered clustering and similarity models for <b>33,000</b> Spotify playlists. built a recommendation engine improving top-N engagement by <b>30%</b>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== COURSES & CERTIFICATES ====== -->
+    <section id="courses">
+      <div class="container">
+        <h2 class="section-title">Course & Certificates</h2>
+        <p class="sub">Selected courses and certificates demonstrating continuous learning.</p>
+        <div class="certificates panel">
+          <div class="cert-grid">
+            <div class="cert-column">
+              <div class="cert-list">
+                <div class="cert-item">Great Learning — Data Visualization with Python, Power BI</div>
+                <div class="cert-item">IBM — SQL and Relational Databases</div>
+                <div class="cert-item">Lets Upgrade — Data Analytics using Power BI</div>
+                <div class="cert-item">Udemy — Data Analysis using Pandas and Python</div>
+                <div class="cert-item">Microsoft — Career Essentials in Data Analysis, Business Analysis</div>
+              </div>
+            </div>
+            <div class="cert-column">
+              <div class="cert-list">
+                <div class="cert-item">HP LIFE — AI for Beginners, Data Science and Analytics, Presenting Data</div>
+                <div class="cert-item">Oracle Dev Gym — Databases for Developers</div>
+                <div class="cert-item">Tech Gurukul — Excel Using AI</div>
+                <div class="cert-item">Be10x — AI Tool Workshop</div>
+                <div class="cert-item">GTT Foundation — Barclays Life Skill Program</div>
+              </div>
             </div>
           </div>
         </div>
@@ -691,6 +782,7 @@
   </script>
 </body>
 </html>
+
 
 
 
