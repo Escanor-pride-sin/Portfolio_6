@@ -384,16 +384,13 @@
         <div>
           <p class="kicker">Data Analyst • AI Enthusiast</p>
           <h1>Hi, I'm <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Shashikiran M</span></h1>
-          <p class="lead">Data Analytics Professional with hands-on experience in data handling, BI reporting, visualization, and predictive analytics 
-spanning internship, real-world projects, and current industry experience. <br>Skilled in Python, SQL, Power BI, Looker Studio, 
-Advanced Excel and Google Sheets with a proven ability to manage 1M+ record datasets, build multi-branch market dashboards 
-that deliver actionable insights for sales and leadership.</p>
+          <p class="lead">Motivated and detail-oriented Data Analyst with a strong foundation in data analysis and visualization. Experienced with Python, SQL, Power BI, Microsoft Excel and Google Sheets. I love building useful products from data.</p>
           <div class="cta">
             <a class="btn btn-primary" href="#projects">View Projects</a>
             <a class="btn btn-ghost" href="https://mail.google.com/mail/?view=cm&fs=1&to=shashikiranm611@gmail.com" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
             <a class="btn btn-ghost" href="https://www.linkedin.com/in/shashi611" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             <a class="btn btn-ghost" href="https://github.com/Escanor-pride-sin?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
-            <a class="btn btn-ghost" href="https://drive.google.com/file/d/10zwCa7Vw4K0V27ks3Xte-tYfl4nw38_X/view?usp=drivesdk" target="_blank">Resume</a>
+            <a class="btn btn-ghost" href="https://drive.google.com/file/d/1_sxSCPo6HqnNtZa2oGZfxJAC9DJ-5d9B/view?usp=drivesdk" target="_blank">Resume</a>
           </div>
         </div>
       </div>
@@ -851,11 +848,22 @@ Enabled informed business strategy through actionable and quantified sales analy
         if(window.innerWidth > 640) hideNotice(false);
       });
     })();
+
+    // One-time alert for visitors (shown once per browser)
+    (function(){
+      const KEY = 'siteAlertShown_v1';
+      try{
+        if(!localStorage.getItem(KEY)){
+          setTimeout(()=>{
+            alert('For the best experience, view this site on a PC or laptop.');
+            try{ localStorage.setItem(KEY,'1') }catch(e){}
+          }, 600);
+        }
+      }catch(e){ /* ignore localStorage errors */ }
+    })();
   </script>
 </body>
 </html>
-
-
 
 
 
