@@ -849,17 +849,15 @@ Enabled informed business strategy through actionable and quantified sales analy
       });
     })();
 
-    // One-time alert for visitors (shown once per browser)
+    // Alert only on mobile viewports (<= 640px)
     (function(){
-      const KEY = 'siteAlertShown_v1';
       try{
-        if(!localStorage.getItem(KEY)){
+        if(window.matchMedia && window.matchMedia('(max-width: 640px)').matches){
           setTimeout(()=>{
-            alert('For the best experience, view this site on a PC or laptop.');
-            try{ localStorage.setItem(KEY,'1') }catch(e){}
+            alert('This site is optimized for larger screens. For best experience, open on a PC or laptop.');
           }, 600);
         }
-      }catch(e){ /* ignore localStorage errors */ }
+      }catch(e){ /* ignore unexpected errors */ }
     })();
   </script>
 </body>
