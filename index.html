@@ -352,6 +352,7 @@
     #mobileNotice .actions .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff}
     #mobileNotice .actions .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.06);color:#dbe3f5}
   </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- ====== NAV ====== -->
@@ -415,7 +416,7 @@
    
 
     <!-- ====== SKILLS ====== -->
-    <section id="skills">
+    <section id="skills" class="fade-in">
       <div class="container">
         <h2 class="section-title">Skills</h2>
         <p class="sub">Technical stack I use and work with day-to-day.</p>
@@ -486,7 +487,7 @@
     </section>
 
     <!-- ====== EXPERIENCE ====== -->
-    <section id="experience">
+    <section id="experience" class="fade-in">
       <div class="container">
         <h2 class="section-title">Experience</h2>
         <p class="sub">Real-world practice and impact.</p>
@@ -518,7 +519,7 @@
     </section>
 
     <!-- ====== COURSES & CERTIFICATES ====== -->
-    <section id="courses">
+    <section id="courses" class="fade-in">
       <div class="container">
         <h2 class="section-title">Course & Certificates</h2>
         <p class="sub">Selected courses and certificates demonstrating continuous learning.</p>
@@ -548,175 +549,193 @@
     </section>
 
     <!-- ====== PROJECTS ====== -->
-    <section id="projects">
+    <section id="projects" class="fade-in">
       <div class="container">
         <h2 class="section-title">Projects</h2>
         <div class="projects">
           <!-- Project 1 -->
-          <article class="panel project">
-            <div class="cover" aria-label="BridgeConnect project cover placeholder">
-              <a href="https://github.com/Escanor-pride-sin/Passenger-Flow-Prediction-in-Metro-Systems" target="_blank"></a>
-              <img src="Image\Screenshot 2025-08-26 150724.png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+          <article class="panel project" data-project-id="1">
+            <div class="project-display">
+              <div class="cover" aria-label="Passenger Flow Prediction project cover">
+                <img src="Image\Screenshot 2025-08-26 150724.png" alt="Passenger Flow Prediction" style="width:100%; height:auto;">
+              </div>
+              <h4 class="project-title"><a href="https://github.com/Escanor-pride-sin/Passenger-Flow-Prediction-in-Metro-Systems" target="_blank">Passenger Flow Prediction in Metro Systems</a></h4>
+              <button class="btn-view-info" aria-expanded="false">View Info</button>
             </div>
-            <div class="body">
-              <h4><a href="https://github.com/Escanor-pride-sin/Passenger-Flow-Prediction-in-Metro-Systems" target="_blank">Passenger Flow Prediction in Metro Systems</a></h4>
-              <p>Developed and deployed a dynamic feature fusion network (DFFN) to predict metro passenger flow, leveraging RF, LR, DT, and 
-                KNN classifiers on historical and real-time datasets to optimize scheduling and service quality. <br>Achieved improved prediction 
-                accuracy over baseline statistical models, enabling real-time resource allocation and supporting metro authorities in operational 
-                </p>
-              <div>
+            <div class="project-info" hidden>
+              <p>Developed and deployed a dynamic feature fusion network (DFFN) to predict metro passenger flow, leveraging RF, LR, DT, and KNN classifiers on historical and real-time datasets to optimize scheduling and service quality. <br>Achieved improved prediction accuracy over baseline statistical models, enabling real-time resource allocation and supporting metro authorities in operational planning.</p>
+              <p>Developed and deployed a dynamic feature fusion network (DFFN) to predict metro passenger flow, leveraging RF, LR, DT, and KNN classifiers on historical and real-time datasets to optimize scheduling and service quality. <br>Achieved improved prediction accuracy over baseline statistical models, enabling real-time resource allocation and supporting metro authorities in operational planning.</p>
+              <div class="tags">
                 <span class="tag">Machine Learning</span>
                 <span class="tag">Pandas, Numpy, Matplotlib</span>
                 <span class="tag">HTML</span>
                 <span class="tag">CSS</span>
                 <span class="tag">JavaScript</span>
               </div>
+              <button class="btn-close-info" aria-label="Close info">Close</button>
             </div>
           </article>
 
           <!-- Project 2 -->
-          <article class="panel project">
-            <div class="cover" aria-label="Cooking Companion project cover placeholder">
-              <a href="https://github.com/Escanor-pride-sin/N8N-Scheduler-Agent" target="_blank"></a>
-              <img src="Image\Screenshot 2025-08-26 205726.png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+          <article class="panel project" data-project-id="2">
+            <div class="project-display">
+              <div class="cover" aria-label="Scheduler Agent project cover">
+                <img src="Image\Screenshot 2025-08-26 205726.png" alt="Scheduler Agent" style="width:100%; height:auto;">
+              </div>
+              <h4 class="project-title"><a href="https://github.com/Escanor-pride-sin/N8N-Scheduler-Agent" target="_blank">Scheduler Agent</a></h4>
+              <button class="btn-view-info" aria-expanded="false">View Info</button>
             </div>
-            <div class="body">
-              <h4><a href="https://github.com/Escanor-pride-sin/N8N-Scheduler-Agent" target="_blank">Scheduler Agent</a></h4>
-              <p>AI agent to automatically add tasks and events to calendar just by chatting with it.<br>This  AI Agent add, delete, and retrieve tasks and events seamlessly using this AI-powered workflow.</p>
-              <div>
+            <div class="project-info" hidden>
+              <p>AI agent to automatically add tasks and events to calendar just by chatting with it.<br>This AI Agent add, delete, and retrieve tasks and events seamlessly using this AI-powered workflow.</p>
+              <div class="tags">
                 <span class="tag">AI Models</span>
                 <span class="tag">Gemini</span>
               </div>
+              <button class="btn-close-info" aria-label="Close info">Close</button>
             </div>
           </article>
 
            <!-- Project 3 -->
-          <article class="panel project">
-            <div class="cover" aria-label="Cooking Companion project cover placeholder">
-              <a href="https://github.com/Escanor-pride-sin/Spotify-Songs-Genre-Segmentation" target="_blank"></a>
-              <img src="Image\SPOTIFY.jpg" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+          <article class="panel project" data-project-id="3">
+            <div class="project-display">
+              <div class="cover" aria-label="Spotify Songs Genre Segmentation project cover">
+                <img src="Image\SPOTIFY.jpg" alt="Spotify Genre Segmentation" style="width:100%; height:auto;">
+              </div>
+              <h4 class="project-title"><a href="https://github.com/Escanor-pride-sin/Spotify-Songs-Genre-Segmentation" target="_blank">Spotify-Songs-Genre-Segmentation</a></h4>
+              <button class="btn-view-info" aria-expanded="false">View Info</button>
             </div>
-            <div class="body">
-              <h4><a href="https://github.com/Escanor-pride-sin/Spotify-Songs-Genre-Segmentation" target="_blank">Spotify-Songs-Genre-Segmentation</a></h4>
+            <div class="project-info" hidden>
               <p>Engineered clustering and similarity models for 33,000 Spotify playlists<br> Built a recommendation engine improving top-N engagement by 30%.</p>
-              <div>
+              <div class="tags">
                 <span class="tag">Machine Learning</span>
                 <span class="tag">Pandas, Numpy, Matplotlib</span>
                 <span class="tag">Python</span>
                 <span class="tag">Scikit-learn</span>
               </div>
+              <button class="btn-close-info" aria-label="Close info">Close</button>
             </div>
           </article>
 
-          <!-- Project 3 -->
-          <article class="panel project">
-            <div class="cover" aria-label="Cooking Companion project cover placeholder">
-              <a href="https://github.com/Escanor-pride-sin/Walmart-Data-Analysis" target="_blank"></a>
-              <img src="Image\project6.png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+          <!-- Project 4 -->
+          <article class="panel project" data-project-id="4">
+            <div class="project-display">
+              <div class="cover" aria-label="Walmart Data Analysis project cover">
+                <img src="Image\project6.png" alt="Walmart Data Analysis" style="width:100%; height:auto;">
+              </div>
+              <h4 class="project-title"><a href="https://github.com/Escanor-pride-sin/Walmart-Data-Analysis" target="_blank">Walmart Data Analysis - MySQL</a></h4>
+              <button class="btn-view-info" aria-expanded="false">View Info</button>
             </div>
-            <div class="body">
-              <h4><a href="https://github.com/Escanor-pride-sin/Walmart-Data-Analysis" target="_blank">Walmart Data Analysis - MySQL</a></h4>
-              <p> Analyzed 1,000+ Walmart sales records using MySQL Workbench to uncover insights across 3 branches, optimizing data through 
-                 SQL-based wrangling, feature engineering, and trend analysis that identified top-performing product lines, customer types, and sales 
-                 periods. </p>
-              <div>
+            <div class="project-info" hidden>
+              <p>Analyzed 1,000+ Walmart sales records using MySQL Workbench to uncover insights across 3 branches, optimizing data through SQL-based wrangling, feature engineering, and trend analysis that identified top-performing product lines, customer types, and sales periods.</p>
+              <div class="tags">
                 <span class="tag">MySQL</span>
                 <span class="tag">Data Analysis</span>
                 <span class="tag">Python</span>
                 <span class="tag">Scikit-learn</span>
               </div>
+              <button class="btn-close-info" aria-label="Close info">Close</button>
             </div>
           </article>
 
-          <article class="panel project">
-            <div class="cover" aria-label="Cooking Companion project cover placeholder">
-              <a href="https://github.com/Escanor-pride-sin/FIFA-Data-Analysis" target="_blank"></a>
-              <img src="Image\FIFA.jpg" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+          <!-- Project 5 -->
+          <article class="panel project" data-project-id="5">
+            <div class="project-display">
+              <div class="cover" aria-label="FIFA Data Analysis project cover">
+                <img src="Image\FIFA.jpg" alt="FIFA Data Analysis" style="width:100%; height:auto;">
+              </div>
+              <h4 class="project-title"><a href="https://github.com/Escanor-pride-sin/FIFA-Data-Analysis" target="_blank">FIFA Data Analysis</a></h4>
+              <button class="btn-view-info" aria-expanded="false">View Info</button>
             </div>
-            <div class="body">
-              <h4><a href="https://github.com/Escanor-pride-sin/FIFA-Data-Analysis" target="_blank">FIFA Data Analysis</a></h4>
+            <div class="project-info" hidden>
               <p>This project analyzed a comprehensive FIFA 20 player dataset of 18,278 players using Python. <br>Uncovering key performance insights through advanced data preprocessing, visualization and statistical methods</p>
-              <div>
+              <div class="tags">
                 <span class="tag">Pandas, Numpy, Matplotlib</span>
                 <span class="tag">Python</span>
                 <span class="tag">Scikit-learn</span>
               </div>
+              <button class="btn-close-info" aria-label="Close info">Close</button>
             </div>
           </article>
           
-          <!-- Project 5 -->
-          <article class="panel project">
-            <div class="cover" aria-label="Customer Churn Prediction project cover placeholder">
-              <a href="https://github.com/Escanor-pride-sin/Prediction-of-Loan-Transaction" target="_blank"></a>
-              <img src="Image\loan.gif" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+          <!-- Project 6 -->
+          <article class="panel project" data-project-id="6">
+            <div class="project-display">
+              <div class="cover" aria-label="Loan Transaction Prediction project cover">
+                <img src="Image\loan.gif" alt="Loan Transaction Prediction" style="width:100%; height:auto;">
+              </div>
+              <h4 class="project-title"><a href="https://github.com/Escanor-pride-sin/Prediction-of-Loan-Transaction" target="_blank">Prediction of Loan Transaction</a></h4>
+              <button class="btn-view-info" aria-expanded="false">View Info</button>
             </div>
-            <div class="body">
-              <h4><a href="https://github.com/Escanor-pride-sin/Prediction-of-Loan-Transaction" target="_blank">Prediction of Loan Transaction</a></h4>
-              <p>Built a loan repayment prediction system using 209,593 records and 37 features. <br>Conducted feature engineering and model tuning.  </p>
-              <div>
+            <div class="project-info" hidden>
+              <p>Built a loan repayment prediction system using 209,593 records and 37 features. <br>Conducted feature engineering and model tuning.</p>
+              <div class="tags">
                 <span class="tag">Python</span>
                 <span class="tag">Machine Learning</span>
                 <span class="tag">Pandas, Numpy, Matplotlib</span>
                 <span class="tag">Scikit-learn</span>
               </div>
-            </div>
-          </article>
-
-           <article class="panel project">
-            <div class="cover" aria-label="Cooking Companion project cover placeholder">
-              <a href="https://github.com/Escanor-pride-sin/Warehouse-Data-Analysis-MySQL-" target="_blank"></a>
-              <img src="Image\AdobeStock_181658575.jpeg" alt="BridgeConnect project cover" style="width:100%; height:auto;">
-            </div>
-            <div class="body">
-              <h4><a href="https://github.com/Escanor-pride-sin/Warehouse-Data-Analysis-MySQL-" target="_blank">Warehouse Data Analysis - MySQL</a></h4>
-              <p> Examined over 2.9 million sales records to identify the top 5 products each generating $1.2M+ revenue and tracked annual 
-               performance for 17,427 customers in peak years. <br>Automated year-wise sales and quantity reporting, processing 609,208 units and 
-               4,048 orders. Created summary dashboards with metrics like average price, top customers, and product trends from large datasets. 
-               Enabled informed business strategy through actionable and quantified sales analytics</p>
-              <div>
-                <span class="tag">MySQL</span>
-                <span class="tag">Data Analysis</span>
-              </div>
+              <button class="btn-close-info" aria-label="Close info">Close</button>
             </div>
           </article>
 
            <!-- Project 7 -->
-          <article class="panel project">
-            <div class="cover" aria-label="Customer Churn Prediction project cover placeholder">
-              <a href="https://github.com/Escanor-pride-sin/Cardiovascular-Disease-Prediction" target="_blank"></a>
-              <img src="Image\OIP.webp" alt="BridgeConnect project cover" style="width:100%; height:auto;">
-            </div>
-            <div class="body">
-              <h4><a href="https://github.com/Escanor-pride-sin/Cardiovascular-Disease-Prediction" target="_blank">Cardiovascular-Disease-Prediction</a></h4>
-              <p>Developed heart disease prediction models using 70K patient records evaluated SVM, KNN,
-                  Decision Tree, Logistic Regression, Random Forest via cross-validation, achieving 75% accuracy</p>
-              <div>
-                <span class="tag">Python</span>
-                <span class="tag">Machine Learning</span>
-                <span class="tag">Pandas, Numpy, Matplotlib</span>
-                <span class="tag">Scikit-learn</span>
+          <article class="panel project" data-project-id="7">
+            <div class="project-display">
+              <div class="cover" aria-label="Warehouse Data Analysis project cover">
+                <img src="Image\AdobeStock_181658575.jpeg" alt="Warehouse Data Analysis" style="width:100%; height:auto;">
               </div>
+              <h4 class="project-title"><a href="https://github.com/Escanor-pride-sin/Warehouse-Data-Analysis-MySQL-" target="_blank">Warehouse Data Analysis - MySQL</a></h4>
+              <button class="btn-view-info" aria-expanded="false">View Info</button>
+            </div>
+            <div class="project-info" hidden>
+              <p>Examined over 2.9 million sales records to identify the top 5 products each generating $1.2M+ revenue and tracked annual performance for 17,427 customers in peak years. <br>Automated year-wise sales and quantity reporting, processing 609,208 units and 4,048 orders. Created summary dashboards with metrics like average price, top customers, and product trends from large datasets. Enabled informed business strategy through actionable and quantified sales analytics</p>
+              <div class="tags">
+                <span class="tag">MySQL</span>
+                <span class="tag">Data Analysis</span>
+              </div>
+              <button class="btn-close-info" aria-label="Close info">Close</button>
             </div>
           </article>
 
           <!-- Project 8 -->
-          <article class="panel project">
-            <div class="cover" aria-label="Customer Churn Prediction project cover placeholder">
-              <a href="https://github.com/Escanor-pride-sin/Enhancing-Real-Estate-Investment-Decisions" target="_blank"></a>
-              <img src="Image\real.webp" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+          <article class="panel project" data-project-id="8">
+            <div class="project-display">
+              <div class="cover" aria-label="Cardiovascular Disease Prediction project cover">
+                <img src="Image\OIP.webp" alt="Cardiovascular Disease Prediction" style="width:100%; height:auto;">
+              </div>
+              <h4 class="project-title"><a href="https://github.com/Escanor-pride-sin/Cardiovascular-Disease-Prediction" target="_blank">Cardiovascular-Disease-Prediction</a></h4>
+              <button class="btn-view-info" aria-expanded="false">View Info</button>
             </div>
-            <div class="body">
-              <h4><a href="https://github.com/Escanor-pride-sin/Enhancing-Real-Estate-Investment-Decisions" target="_blank">Housing Price Prediction</a></h4>
-              <p>Formulated a machine learning model using Python and Scikit-learn to predict housing prices from 1,168 records with 81 features.
-<br>Cleaned and preprocessed data by handling 20% missing values through imputation and encoding techniques. Conducted
-exploratory data analysis highlighting key factors like Lot Area, Neighborhood, and Overall Quality influencing prices. <br>Attained an
-R2 of 0.89 and RMSE = 28K using optimized Random Forest and Linear Regression models.</p>
-              <div>
+            <div class="project-info" hidden>
+              <p>Developed heart disease prediction models using 70K patient records evaluated SVM, KNN, Decision Tree, Logistic Regression, Random Forest via cross-validation, achieving 75% accuracy</p>
+              <div class="tags">
                 <span class="tag">Python</span>
                 <span class="tag">Machine Learning</span>
                 <span class="tag">Pandas, Numpy, Matplotlib</span>
                 <span class="tag">Scikit-learn</span>
               </div>
+              <button class="btn-close-info" aria-label="Close info">Close</button>
+            </div>
+          </article>
+
+          <!-- Project 9 -->
+          <article class="panel project" data-project-id="9">
+            <div class="project-display">
+              <div class="cover" aria-label="Housing Price Prediction project cover">
+                <img src="Image\real.webp" alt="Housing Price Prediction" style="width:100%; height:auto;">
+              </div>
+              <h4 class="project-title"><a href="https://github.com/Escanor-pride-sin/Enhancing-Real-Estate-Investment-Decisions" target="_blank">Housing Price Prediction</a></h4>
+              <button class="btn-view-info" aria-expanded="false">View Info</button>
+            </div>
+            <div class="project-info" hidden>
+              <p>Formulated a machine learning model using Python and Scikit-learn to predict housing prices from 1,168 records with 81 features. Cleaned and preprocessed data by handling 20% missing values through imputation and encoding techniques. Conducted exploratory data analysis highlighting key factors like Lot Area, Neighborhood, and Overall Quality influencing prices. <br>Attained an R2 of 0.89 and RMSE = 28K using optimized Random Forest and Linear Regression models.</p>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Pandas, Numpy, Matplotlib</span>
+                <span class="tag">Scikit-learn</span>
+              </div>
+              <button class="btn-close-info" aria-label="Close info">Close</button>
             </div>
           </article>
 
@@ -726,42 +745,52 @@ R2 of 0.89 and RMSE = 28K using optimized Random Forest and Linear Regression mo
     </section>
 
      <!-- ====== JOB SIMULATION ====== -->
-    <section id="Simulations">
+    <section id="Simulations" class="fade-in">
       <div class="container">
         <h2 class="section-title">Job Simulation</h2>
         <div class="projects">
-          <!-- Project 1 -->
-          <article class="panel project">
-            <div class="cover" aria-label="BridgeConnect project cover placeholder">
-              <img src="Image\download3.png" alt="BridgeConnect project cover" style="width:100%; height:200px;">
+          <!-- Simulation 1 -->
+          <article class="panel project" data-project-id="sim-1">
+            <div class="project-display">
+              <div class="cover" aria-label="Data Analytics & Visualization Simulations project cover">
+                <img src="Image\download3.png" alt="Data Analytics Simulations" style="width:100%; height:200px;">
+              </div>
+              <h4 class="project-title"><a href="https://drive.google.com/file/d/1om_8GqvOHC4FDQoI1-k5LmeC2y7eBJrv/view?usp=drivesdk" target="_blank">Data Analytics & Visualization Simulations</a></h4>
+              <button class="btn-view-info" aria-expanded="false">View Info</button>
             </div>
-            <div class="body">
-              <h4><a href="https://drive.google.com/file/d/1om_8GqvOHC4FDQoI1-k5LmeC2y7eBJrv/view?usp=drivesdk" target="_blank">Data Analytics & Visualization Simulations</a></h4>
-              <p>Created dashboards and hypothesis tests; surfaced insights on business datasets, influencing process recommendations and increasing 
-              project stakeholder satisfaction. </p>
-            </div>
-          </article>
-
-          <!-- Project 2 -->
-          <article class="panel project">
-            <div class="cover" aria-label="Cooking Companion project cover placeholder">
-              <img src="Image\download (1).png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
-            </div>
-            <div class="body">
-              <h4><a href="https://drive.google.com/file/d/1lzzZk51PYK7WQFw7Rcr8nngZHXyQV_TI/view?usp=drivesdk" target="_blank">Gen AI Financial Chatbot</a></h4>
-              <p>Enhanced chatbot for financial queries, automating responses for 80% of intents; added retrieval and routing, tested accuracy on program 
-              dataset.   </p>
+            <div class="project-info" hidden>
+              <p>Created dashboards and hypothesis tests; surfaced insights on business datasets, influencing process recommendations and increasing project stakeholder satisfaction.</p>
+              <button class="btn-close-info" aria-label="Close info">Close</button>
             </div>
           </article>
 
-           <!-- Project 3 -->
-          <article class="panel project">
-            <div class="cover" aria-label="Customer Churn Prediction project cover placeholder">
-              <img src="Image\download.png" alt="BridgeConnect project cover" style="width:100%; height:auto;">
+          <!-- Simulation 2 -->
+          <article class="panel project" data-project-id="sim-2">
+            <div class="project-display">
+              <div class="cover" aria-label="Gen AI Financial Chatbot project cover">
+                <img src="Image\download (1).png" alt="Gen AI Financial Chatbot" style="width:100%; height:auto;">
+              </div>
+              <h4 class="project-title"><a href="https://drive.google.com/file/d/1lzzZk51PYK7WQFw7Rcr8nngZHXyQV_TI/view?usp=drivesdk" target="_blank">Gen AI Financial Chatbot</a></h4>
+              <button class="btn-view-info" aria-expanded="false">View Info</button>
             </div>
-            <div class="body">
-              <h4><a href="https://drive.google.com/file/d/1TnpYUgmBW2QW9j0GOqu6sZVQDCVcG8nk/view?usp=drivesdk" target="_blank">Data Visualization Simulations</a></h4>
-              <p>Improved KPI comprehension scores by 30% through targeted design and storytelling, measured by simulated client assessment.  </p>
+            <div class="project-info" hidden>
+              <p>Enhanced chatbot for financial queries, automating responses for 80% of intents; added retrieval and routing, tested accuracy on program dataset.</p>
+              <button class="btn-close-info" aria-label="Close info">Close</button>
+            </div>
+          </article>
+
+          <!-- Simulation 3 -->
+          <article class="panel project" data-project-id="sim-3">
+            <div class="project-display">
+              <div class="cover" aria-label="Data Visualization Simulations project cover">
+                <img src="Image\download.png" alt="Data Visualization Simulations" style="width:100%; height:auto;">
+              </div>
+              <h4 class="project-title"><a href="https://drive.google.com/file/d/1TnpYUgmBW2QW9j0GOqu6sZVQDCVcG8nk/view?usp=drivesdk" target="_blank">Data Visualization Simulations</a></h4>
+              <button class="btn-view-info" aria-expanded="false">View Info</button>
+            </div>
+            <div class="project-info" hidden>
+              <p>Improved KPI comprehension scores by 30% through targeted design and storytelling, measured by simulated client assessment.</p>
+              <button class="btn-close-info" aria-label="Close info">Close</button>
             </div>
           </article>
         </div>
@@ -769,7 +798,7 @@ R2 of 0.89 and RMSE = 28K using optimized Random Forest and Linear Regression mo
     </section>
 
     <!-- ====== EDUCATION ====== -->
-    <section id="education">
+    <section id="education" class="fade-in">
       <div class="container">
         <h2 class="section-title">Education</h2>
         <div class="panel timeline">
@@ -786,7 +815,7 @@ R2 of 0.89 and RMSE = 28K using optimized Random Forest and Linear Regression mo
     </section>
 
     <!-- ====== ACHIEVEMENTS ====== -->
-    <section id="achievements">
+    <section id="achievements" class="fade-in">
       <div class="container">
         <h2 class="section-title">Achievement</h2>
         <div class="panel" style="padding:16px">
@@ -895,8 +924,10 @@ R2 of 0.89 and RMSE = 28K using optimized Random Forest and Linear Regression mo
       }catch(e){ /* ignore unexpected errors */ }
     })();
   </script>
+  <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
